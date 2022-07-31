@@ -64,32 +64,32 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
     if (cargoLevel < 10000 && fuelLevel < 10000) {                                      // Cargo ok & fuel too low
-        list.style.visibility = "visible";
         fuelStatus.innerHTML = `Fuel level too low for launch`;
         cargoStatus.innerHTML = 'Cargo mass low enough for launch';
         launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
         launchStatus.style.color = 'rgb(199, 37, 78)'; // Red
+        list.style.visibility = "visible";
         
     } else if (cargoLevel > 10000 && fuelLevel >= 10000) {                              // Cargo too heavy & fuel ok
-        list.style.visibility = "visible";
         fuelStatus.innerHTML = 'Fuel level high enough for launch';
         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
         launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
         launchStatus.style.color = 'rgb(199, 37, 78)'; // Red
+        list.style.visibility = "visible";
         
     } else if (cargoLevel > 10000 && fuelLevel < 10000) {                               // Cargo too heavy & fuel too low
-        list.style.visibility = "visible";
         fuelStatus.innerHTML = 'Fuel level too low for launch';
         cargoStatus.innerHTML = 'Cargo mass too heavy for launch';                      
         launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
         launchStatus.style.color = 'rgb(199, 37, 78)'; // Red
+        list.style.visibility = "visible";
         
     } else if (cargoLevel < 10000 && fuelLevel >= 10000) {                              // Everything ok           
-        list.style.visibility = "visible";
         fuelStatus.innerHTML = 'Fuel level high enough for launch';
         cargoStatus.innerHTML = 'Cargo mass low enough for launch';
         launchStatus.innerHTML = 'Shuttle is Ready for Launch';
         launchStatus.style.color = 'rgb(65, 159, 106)'; // Green
+        list.style.visibility = "visible";
     }
 }
 
