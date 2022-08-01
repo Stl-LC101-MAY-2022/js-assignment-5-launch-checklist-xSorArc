@@ -9,8 +9,9 @@ window.addEventListener("load", function() {
 
     list.style.visibility = 'hidden';
 
-    form.addEventListener('submit', () => {
+    form.addEventListener('submit', (e) => {
         formSubmission(this.document, list, pilot, copilot, fuel, cargo);
+        e.preventDefault();
     })
 
     let listedPlanets;

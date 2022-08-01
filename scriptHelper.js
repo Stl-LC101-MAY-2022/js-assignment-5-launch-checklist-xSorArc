@@ -19,7 +19,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
 
-    if (testInput === "") {
+    if (testInput === "") {                         // If vI is inside formSubmisstion, trim() isn't recognized.
         return "Empty";
     } else if (Number(testInput)) {
         return "Is a Number";
@@ -35,31 +35,31 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     const fuelStatus = document.getElementById('fuelStatus');
     const cargoStatus = document.getElementById('cargoStatus');
     const launchStatus = document.getElementById('launchStatus');
-    const form = document.querySelector('form');
+    // const form = document.querySelector('form');
     
     let vIPilot = validateInput(pilot.value);
     let vICopilot = validateInput(copilot.value);
     let vIFuel = validateInput(fuelLevel.value);
     let vICargo = validateInput(cargoLevel.value);
 
-    form.addEventListener('submit', (e) => {
+    // form.addEventListener('submit', () => {
     
-        // console.log(`Values before if's: ${pilot.value} = ${vIPilot} || ${copilot.value} = ${vICopilot} || ${fuelLevel.value} = ${vIFuel} || ${cargoLevel.value} = ${vICargo}`);
+        console.log(`Values before if's: ${pilot.value} = ${vIPilot} || ${copilot.value} = ${vICopilot} || ${fuelLevel.value} = ${vIFuel} || ${cargoLevel.value} = ${vICargo}`);
     
         if (vIPilot === "Empty" || vICopilot === "Empty" || vIFuel === "Empty" || vICargo === "Empty") {
             alert('All fields required!');  // Alerts user of empty field.
-            // console.log('Empty alert Pilot:', vIPilot, 'Co:', copilot, 'Fuel:', fuelLevel, "Cargo:", cargoLevel);
-            e.preventDefault();             // Prevents submission.
+            console.log('Empty alert ', pilot.value, vIPilot, 'Co:', copilot, 'Fuel:', fuelLevel, "Cargo:", cargoLevel);
+            // e.preventDefault();             // Prevents submission.
         }
         
-        if (vIPilot === "Is a Number" || vICopilot === "Is a Number" || vIFuel === "Not a number" || vICargo === "Not a Number") {
+       else if (vIPilot === "Is a Number" || vICopilot === "Is a Number" || vIFuel === "Not a number" || vICargo === "Not a Number") {
             alert('Make sure to enter valid information for each field!');
-            // console.log(vIPilot, vICopilot, vIFuel, vICargo);
-            // console.log('Pilot:', pilot.value, 'Copilot:', copilot.value, 'Fuel:', fuelLevel.value,'Cargo:', cargoLevel.value);
-            e.preventDefault();
+            console.log(vIPilot, vICopilot, vIFuel, vICargo);
+            console.log('Pilot:', pilot.value, 'Copilot:', copilot.value, 'Fuel:', fuelLevel.value,'Cargo:', cargoLevel.value);
+            // e.preventDefault();
         }
-    })
-    
+    // })
+        
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
